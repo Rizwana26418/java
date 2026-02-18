@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Solution {
+    public static void main(String []argh) {
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()) {
+            String input = sc.next();
+            System.out.println(isBalanced(input));
+        }
+    }
+
+    private static boolean isBalanced(String input) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : input.toCharArray()) {
+            // Push opening brackets
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch);
+            } else {
+                // If stack is empty, it's unbalanced
+                if (stack.isEmpty()) return false;
+
+                char top = stack.pop();
+                // Check matching pairs
+                if ((ch == ')' && top != '(') ||
+                    (ch == '}' && top != '{') ||
+                    (ch == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        // Balanced if stack is empty at the end
+        return stack.isEmpty();
+    }
+}
