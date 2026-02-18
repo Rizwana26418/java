@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+        scan.close();
+
+        // Split on any sequence of non-alphabetic characters
+        String[] tokens = s.trim().split("[^A-Za-z]+");
+
+        // Handle empty input case
+        if (s.trim().isEmpty()) {
+            System.out.println(0);
+            return;
+        }
+
+        // Print number of tokens
+        System.out.println(tokens.length);
+
+        // Print each token
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+    }
+}
